@@ -5,7 +5,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Servir arquivos estáticos
-app.use(express.static("."));
+app.use(
+  express.static(".", {
+    extensions: ["html", "htm"],
+    index: false,
+  })
+);
 
 // Rota principal - servir o index.html
 app.get("/", (req, res) => {
