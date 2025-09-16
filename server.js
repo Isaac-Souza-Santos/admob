@@ -56,9 +56,12 @@ app.get("*", (req, res) => {
 // Error handling
 app.use((err, req, res, next) => {
   console.error("Unhandled error:", err);
-  res.status(500).json({ 
+  res.status(500).json({
     error: "Internal server error",
-    message: process.env.NODE_ENV === 'production' ? 'Something went wrong!' : err.message
+    message:
+      process.env.NODE_ENV === "production"
+        ? "Something went wrong!"
+        : err.message,
   });
 });
 
@@ -68,12 +71,12 @@ app.use((req, res) => {
 });
 
 // Iniciar servidor
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`✅ Servidor rodando na porta ${PORT}`);
   console.log(`🌐 Acesse: http://localhost:${PORT}`);
   console.log(`❤️ Health check: http://localhost:${PORT}/health`);
   console.log(`📁 Diretório: ${__dirname}`);
-  console.log(`🔧 NODE_ENV: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🔧 NODE_ENV: ${process.env.NODE_ENV || "development"}`);
 });
 
 // Graceful shutdown
