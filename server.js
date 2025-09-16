@@ -14,18 +14,14 @@ app.use((req, res, next) => {
   next();
 });
 
-// Servir arquivos estáticos da pasta raiz
-app.use(express.static(__dirname));
-
-// Rota principal - servir o index.html
-app.get("/", (req, res) => {
-  console.log("Serving index.html");
-  try {
-    res.sendFile(path.join(__dirname, "index.html"));
-  } catch (error) {
-    console.error("Error serving index.html:", error);
-    res.status(500).send("Error loading page");
-  }
+// Rota de health check
+app.get("/health", (req, res) => {
+  res.json({
+    status: "OK",
+    timestamp: new Date().toISOString(),
+    port: PORT,
+    nodeEnv: process.env.NODE_ENV,
+  });
 });
 
 // Rota para app-ads.txt (Google AdSense)
@@ -39,28 +35,19 @@ app.get("/app-ads.txt", (req, res) => {
   }
 });
 
-// Rota para verificação do Google Search Console (removida - arquivo não existe)
-
-// Rota de health check
-app.get("/health", (req, res) => {
-  res.json({
-    status: "OK",
-    timestamp: new Date().toISOString(),
-    port: PORT,
-    nodeEnv: process.env.NODE_ENV,
-  });
-});
-
-// Rota para qualquer arquivo estático (CSS, JS, imagens, etc.)
-app.get("*", (req, res) => {
-  console.log(`Serving static file: ${req.path}`);
+// Rota principal - servir o index.html
+app.get("/", (req, res) => {
+  console.log("Serving index.html");
   try {
-    res.sendFile(path.join(__dirname, req.path));
+    res.sendFile(path.join(__dirname, "index.html"));
   } catch (error) {
-    console.error(`Error serving static file ${req.path}:`, error);
-    res.status(404).send("File not found");
+    console.error("Error serving index.html:", error);
+    res.status(500).send("Error loading page");
   }
 });
+
+// Servir arquivos estáticos da pasta raiz (deve vir por último)
+app.use(express.static(__dirname));
 
 // Error handling
 app.use((err, req, res, next) => {
