@@ -32,6 +32,7 @@ app.get("/", (req, res) => {
   console.log("Arquivo existe?", fs.existsSync(indexPath));
 
   if (fs.existsSync(indexPath)) {
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.sendFile(indexPath);
   } else {
     console.error("Arquivo index.html não encontrado!");
