@@ -25,5 +25,11 @@ app.get("*", (req, res) => {
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`✅ Servidor rodando na porta ${PORT}`);
-  console.log(`🌐 Acesse: http://localhost:${PORT}`);
+
+  // Mostrar URL correta baseada no ambiente
+  if (process.env.NODE_ENV === "production") {
+    console.log(`🌐 Aplicação disponível no Heroku`);
+  } else {
+    console.log(`🌐 Acesse: http://localhost:${PORT}`);
+  }
 });
