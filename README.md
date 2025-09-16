@@ -1,7 +1,5 @@
 # Portfolio Isaac Souza
 
-Portfolio pessoal do Isaac Souza - Desenvolvedor Front-End especializado em React, TypeScript e Next.js.
-
 ## 🚀 Deploy no Heroku
 
 ### Pré-requisitos
