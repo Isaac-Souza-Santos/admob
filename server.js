@@ -40,15 +40,17 @@ app.get("/app-ads.txt", (req, res) => {
 });
 
 // Servir arquivos estáticos da pasta raiz (apenas arquivos específicos)
-app.use(express.static(__dirname, {
-  index: false, // Não servir index.html automaticamente
-  setHeaders: (res, path) => {
-    // Definir headers apropriados para arquivos estáticos
-    if (path.endsWith('.html')) {
-      res.setHeader('Content-Type', 'text/html');
-    }
-  }
-}));
+app.use(
+  express.static(__dirname, {
+    index: false, // Não servir index.html automaticamente
+    setHeaders: (res, path) => {
+      // Definir headers apropriados para arquivos estáticos
+      if (path.endsWith(".html")) {
+        res.setHeader("Content-Type", "text/html");
+      }
+    },
+  })
+);
 
 // Rota principal - servir o index.html (deve vir por último)
 app.get("*", (req, res) => {
