@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-site-verification"
+      content="R2fyaun8AOSwyKpzTh6ojU2EOLslikZYySacV_ewLxE"
+    />
+    <title>Isaac Souza | Front-End Developer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: #18181b;
+        color: #fff;
+        font-family: "Poppins", Arial, sans-serif;
+        min-height: 100vh;
+      }
+      nav {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background: rgba(24, 24, 27, 0.98);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem 0;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      }
+      .brand {
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: #38bdf8;
+        letter-spacing: 1px;
+        margin-right: 2rem;
+        font-family: "Poppins", Arial, sans-serif;
+      }
+      nav ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        transition: color 0.2s;
+        position: relative;
+      }
+      nav a::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #38bdf8;
+        transition: width 0.3s;
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+      }
+      nav a:hover::after {
+        width: 100%;
+      }
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        padding-top: 80px;
+        background: #18181b;
+        overflow: hidden;
+      }
+      .tech-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+        background: linear-gradient(120deg, #232946 0%, #121629 100%);
+        pointer-events: none;
+      }
+      .tech-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(32px);
+        opacity: 0.18;
+        z-index: 2;
+        pointer-events: none;
+        animation: blobMove 12s infinite alternate ease-in-out;
+      }
+      .blob1 {
+        width: 340px;
+        height: 340px;
+        background: #38bdf8;
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+      .blob2 {
+        width: 260px;
+        height: 260px;
+        background: #a5b4fc;
+        bottom: 5%;
+        right: 12%;
+        animation-delay: 2s;
+      }
+      @keyframes blobMove {
+        0% {
+          transform: scale(1) translateY(0);
+        }
+        100% {
+          transform: scale(1.15) translateY(30px);
+        }
+      }
+      .hero-title {
+        font-size: 5vw;
+        font-weight: 900;
+        margin: 0;
+        letter-spacing: 2px;
+        color: #fff;
+        text-shadow: 0 4px 32px #000a;
+        z-index: 1;
+        opacity: 0;
+        transform: translateY(-60px);
+        animation: heroFadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+      .hero h2 {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 1.5rem 0 0.5rem 0;
+        letter-spacing: 2px;
+        color: #e0e0e0;
+        animation: fadeIn 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .hero .subtitle {
+        font-size: 1.1rem;
+        color: #38bdf8;
+        margin-bottom: 2rem;
+        letter-spacing: 1px;
+        animation: fadeIn 2.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .scroll-down {
+        position: absolute;
+        left: 50%;
+        bottom: 32px;
+        transform: translateX(-50%);
+        cursor: pointer;
+        animation: bounce 2s infinite;
+        font-size: 2rem;
+        color: #38bdf8;
+        background: none;
+        border: none;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(12px);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes heroFadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 80px 24px 40px 24px;
+        color: #fff;
+      }
+      .expertise-cards {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .card {
+        background: #232329;
+        border: 1px solid #333;
+        border-radius: 14px;
+        padding: 18px 10px;
+        min-width: 0;
+        min-height: 140px;
+        color: #fff;
+        box-shadow: 0 2px 12px #0002;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: fadeInUp 0.8s forwards;
+        font-size: 0.98rem;
+      }
+      .card:nth-child(n + 7) {
+        animation-delay: 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-6px) scale(1.04);
+        box-shadow: 0 6px 24px #38bdf855;
+      }
+      .icon {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+      }
+      .underline-pink {
+        border-bottom: 3px solid #f472b6;
+        padding-bottom: 2px;
+        display: inline-block;
+      }
+      .underline-blue {
+        border-bottom: 3px solid #38bdf8;
+        padding-bottom: 2px;
+        display: inline-block;
+      }
+      .underline-orange {
+        border-bottom: 3px solid #fbbf24;
+        padding-bottom: 2px;
+        display: inline-block;
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .projects-section {
+        background: #18181b;
+        padding: 80px 0 40px 0;
+      }
+      .projects-title {
+        text-align: center;
+        font-size: 3rem;
+        color: #fff;
+        margin-bottom: 48px;
+        font-family: "Poppins", sans-serif;
+        border-bottom: 4px solid #38bdf8;
+        display: inline-block;
+        padding-bottom: 8px;
+      }
+      .projects-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .project-card {
+        background: #232329;
+        border: 1px solid #333;
+        border-radius: 18px;
+        width: 340px;
+        overflow: hidden;
+        box-shadow: 0 4px 24px #0002;
+        transition: transform 0.3s, box-shadow 0.3s;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: fadeInUp 0.8s forwards;
+      }
+      .project-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .project-card:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .project-card:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 8px 32px #38bdf855;
+      }
+      .project-img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        background: #111;
+        display: block;
+      }
+      .project-content {
+        padding: 24px 18px 18px 18px;
+      }
+      .project-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .project-type {
+        color: #38bdf8;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+        display: block;
+      }
+      .project-desc {
+        color: #e0e0e0;
+        font-size: 1rem;
+        margin-bottom: 12px;
+      }
+      .project-link {
+        display: inline-block;
+        background: #38bdf8;
+        color: #18181b;
+        font-weight: 700;
+        padding: 8px 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+      }
+      .project-link:hover {
+        background: #fff;
+        color: #38bdf8;
+      }
+      @media (max-width: 900px) {
+        .expertise-cards,
+        .projects-cards {
+          flex-direction: column;
+          align-items: center;
+        }
+        .card,
+        .project-card {
+          width: 90%;
+        }
+      }
+      @media (max-width: 600px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        nav ul {
+          gap: 1rem;
+        }
+        .brand {
+          font-size: 1.1rem;
+          margin-right: 1rem;
+        }
+        section {
+          padding: 60px 8px 24px 8px;
+        }
+      }
+      @media (max-width: 1100px) {
+        .expertise-cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 700px) {
+        .expertise-cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 500px) {
+        .expertise-cards {
+          grid-template-columns: 1fr;
+        }
+      }
+      .project-details {
+        margin-top: 18px;
+        background: #232329;
+        border-radius: 12px;
+        padding: 18px;
+        color: #e0e0e0;
+        box-shadow: 0 2px 12px #0002;
+        animation: fadeIn 0.5s;
+      }
+      .mockup-images {
+        display: flex;
+        gap: 16px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+      .mockup-images img {
+        border-radius: 10px;
+        box-shadow: 0 2px 8px #0004;
+        width: 110px;
+        height: 210px;
+        object-fit: cover;
+      }
+      .about-section {
+        background: #20212b;
+        border-radius: 18px;
+        margin: 40px auto 32px auto;
+        padding: 36px 28px;
+        max-width: 900px;
+        color: #e0e0e0;
+        box-shadow: 0 4px 24px #0002;
+        text-align: center;
+        animation: fadeInUp 1.2s;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .about-photo-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+      .about-photo {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 2px 24px #38bdf8cc, 0 0 0 8px #232329;
+        border: 4px solid #38bdf8;
+        background: none;
+        transition: transform 0.4s, box-shadow 0.4s;
+        animation: photoPop 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      @keyframes photoPop {
+        0% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        80% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .about-photo:hover {
+        transform: scale(1.07) rotate(-2deg);
+        box-shadow: 0 4px 32px #38bdf8, 0 0 0 12px #232329;
+        filter: brightness(1.08);
+      }
+      .about-title {
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+        background: linear-gradient(90deg, #38bdf8 30%, #a5b4fc 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        display: inline-block;
+        animation: fadeInUp 1.4s;
+      }
+      .about-lead,
+      .about-content,
+      .about-links {
+        animation: fadeInUp 1.6s;
+      }
+      .about-lead {
+        font-size: 1.2rem;
+        color: #b3b3b3;
+        margin-bottom: 32px;
+      }
+      .about-content {
+        font-size: 1.08rem;
+        line-height: 1.7;
+        margin-bottom: 32px;
+      }
+      .about-links {
+        margin-top: 24px;
+      }
+      .about-links a {
+        color: #38bdf8;
+        text-decoration: none;
+        margin-right: 18px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: color 0.2s;
+      }
+      .about-links a:hover {
+        text-decoration: underline;
+        color: #a5b4fc;
+      }
+      @media (max-width: 600px) {
+        .about-section {
+          padding: 18px 6px;
+        }
+        .about-photo {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <span class="brand"
+        >IsaacSouza<span style="color: #a5b4fc">._</span></span
+      >
+      <ul>
+        <li><a href="#home">// home</a></li>
+        <li><a href="#sobre">// sobre</a></li>
+        <li><a href="#competencias">// expertise</a></li>
+        <li><a href="#projetos">// work</a></li>
+        <li><a href="#contato">// contact</a></li>
+      </ul>
+    </nav>
+    <section class="hero" id="home">
+      <div class="tech-bg">
+        <svg
+          class="tech-lines"
+          width="100%"
+          height="100%"
+          viewBox="0 0 1200 400"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g stroke="#38bdf8" stroke-width="1.2" opacity="0.13">
+            <path d="M100 100 Q600 0 1100 100" />
+            <path d="M100 300 Q600 400 1100 300" />
+            <path d="M200 50 Q600 200 1000 50" />
+            <path d="M200 350 Q600 200 1000 350" />
+            <circle cx="600" cy="200" r="120" />
+            <circle cx="600" cy="200" r="60" />
+          </g>
+        </svg>
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+      </div>
+      <h1 class="hero-title">ISAAC SOUZA</h1>
+      <h2>DESENVOLVEDOR FRONT-END</h2>
+      <button
+        class="scroll-down"
+        onclick="document.getElementById('sobre').scrollIntoView({behavior:'smooth'})"
+      >
+        &#8595;
+      </button>
+    </section>
+    <section class="about-section" id="sobre">
+      <div class="about-photo-wrapper">
+        <img
+          src="https://via.placeholder.com/180x180/38bdf8/ffffff?text=IS"
+          alt="Isaac Souza"
+          class="about-photo"
+        />
+      </div>
+      <h1 class="about-title">Sobre Mim</h1>
+      <div class="about-lead">
+        Desenvolvedor Front-End apaixonado por criar experiências digitais
+        modernas, funcionais e acessíveis.
+      </div>
+      <div class="about-content">
+        Olá! Sou Isaac Souza, de Jacareí/SP. Minha paixão por tecnologia começou
+        cedo, mas foi no desenvolvimento web que encontrei meu propósito:
+        transformar ideias em interfaces que realmente fazem diferença na vida
+        das pessoas.<br /><br />
+        Atuo principalmente com React, Next.js e TypeScript, sempre buscando
+        unir performance, design e acessibilidade. Tenho experiência no setor de
+        saúde, onde aprendi a importância de criar soluções robustas, seguras e
+        intuitivas.<br /><br />
+        Gosto de desafios, de aprender coisas novas e de trabalhar em equipe.
+        Acredito que tecnologia é sobre pessoas, e por isso valorizo a
+        comunicação, o feedback e a colaboração.<br /><br />
+        Fora do código, curto música, esportes e explorar novas ferramentas e
+        tendências do universo tech.
+      </div>
+      <div class="about-links">
+        <a href="mailto:souza-sjc@hotmail.com">Email</a>
+        <a href="https://github.com/Isaac-Exon" target="_blank">GitHub</a>
+        <a href="http://www.linkedin.com/in/isaacsouzasantos" target="_blank"
+          >LinkedIn</a
+        >
+      </div>
+    </section>
+    <section id="competencias">
+      <h2
+        style="
+          text-align: center;
+          font-size: 3rem;
+          color: #fff;
+          margin-bottom: 48px;
+          font-family: 'Poppins', sans-serif;
+        "
+      >
+        <span
+          style="
+            border-bottom: 4px solid #38bdf8;
+            padding-bottom: 8px;
+            display: inline-block;
+          "
+          >Minhas Competências</span
+        >
+      </h2>
+      <div class="expertise-cards">
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+              alt="React"
+              width="36"
+              height="36"
+            />
+          </div>
+          <h3>React</h3>
+          <p>Interfaces modernas e reativas.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+              alt="TypeScript"
+              width="36"
+              height="36"
+            />
+          </div>
+          <h3>TypeScript</h3>
+          <p>Tipagem estática para JavaScript.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+              alt="Next.js"
+              width="36"
+              height="36"
+              style="background: #fff; border-radius: 8px"
+            />
+          </div>
+          <h3>Next.js</h3>
+          <p>SSR, SSG e rotas otimizadas.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+              alt="Tailwind CSS"
+              width="36"
+              height="36"
+            />
+          </div>
+          <h3>Tailwind CSS</h3>
+          <p>Estilização rápida e responsiva.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+              alt="MySQL"
+              width="36"
+              height="36"
+            />
+          </div>
+          <h3>MySQL</h3>
+          <p>Banco de dados relacional.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+              alt="PostgreSQL"
+              width="36"
+              height="36"
+            />
+          </div>
+          <h3>PostgreSQL</h3>
+          <p>Banco de dados avançado.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+              alt="MongoDB"
+              width="36"
+              height="36"
+            />
+          </div>
+          <h3>MongoDB</h3>
+          <p>NoSQL flexível e escalável.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+              alt="AWS"
+              width="36"
+              height="36"
+            />
+          </div>
+          <h3>AWS</h3>
+          <p>Cloud: S3, SQS, Cognito e mais.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+              alt="GitHub Actions"
+              width="36"
+              height="36"
+              style="background: #fff; border-radius: 8px"
+            />
+          </div>
+          <h3>CI/CD</h3>
+          <p>Integração e entrega contínua.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+              alt="Git"
+              width="36"
+              height="36"
+            />
+          </div>
+          <h3>Git</h3>
+          <p>Versionamento de código.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+              alt="Figma"
+              width="36"
+              height="36"
+            />
+          </div>
+          <h3>Figma</h3>
+          <p>Prototipação e design de interfaces.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+              alt="Python"
+              width="36"
+              height="36"
+            />
+          </div>
+          <h3>Python</h3>
+          <p>Scripts, automação e análise de dados.</p>
+        </div>
+      </div>
+    </section>
+    <section class="projects-section" id="projetos">
+      <h2 class="projects-title">Meus Projetos</h2>
+      <div class="projects-cards">
+        <div class="project-card">
+          <img
+            class="project-img"
+            src="https://placehold.co/340x180/232329/fff?text=Scrum+Edu"
+            alt="Plataforma Educacional Scrum"
+          />
+          <div class="project-content">
+            <div class="project-title">Plataforma Educacional sobre Scrum</div>
+            <span class="project-type"> • TypeScript • HTML </span>
+            <div class="project-desc">
+              Plataforma web para ensino do método ágil Scrum, com trilhas de
+              aprendizado, provas interativas, sistema de pontuação e perfil de
+              usuário.
+            </div>
+            <button class="project-link" onclick="toggleDetails(this)">
+              Ver Projeto
+            </button>
+            <div class="project-details" style="display: none">
+              <p>
+                Plataforma com módulos teóricos, vídeos, avaliações interativas,
+                sistema de pontuação, cadastro/login e perfil de desempenho.
+              </p>
+              <div class="mockup-images">
+                <img
+                  src="https://placehold.co/180x340/38bdf8/fff?text=Login"
+                  alt="Tela Login"
+                />
+                <img
+                  src="https://placehold.co/180x340/232329/fff?text=Trilha"
+                  alt="Tela Trilha"
+                />
+                <img
+                  src="https://placehold.co/180x340/38bdf8/fff?text=Prova"
+                  alt="Tela Prova"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img
+            class="project-img"
+            src="https://placehold.co/340x180/232329/fff?text=Geo+Gestão"
+            alt="Gestão de Atividades Geográficas"
+          />
+          <div class="project-content">
+            <div class="project-title">Gestão de Atividades Geográficas</div>
+            <span class="project-type">React • Tailwind CSS • MongoDB</span>
+            <div class="project-desc">
+              Sistema web para designação e acompanhamento de tarefas
+              geográficas, com mapas interativos, histórico e autenticação de
+              usuários.
+            </div>
+            <button class="project-link" onclick="toggleDetails(this)">
+              Ver Projeto
+            </button>
+            <div class="project-details" style="display: none">
+              <p>
+                Permite gestores criarem tarefas em mapas, analistas
+                visualizarem e marcarem áreas, histórico de tarefas e
+                autenticação diferenciada.
+              </p>
+              <div class="mockup-images">
+                <img
+                  src="https://placehold.co/180x340/38bdf8/fff?text=Mapa"
+                  alt="Tela Mapa"
+                />
+                <img
+                  src="https://placehold.co/180x340/232329/fff?text=Tarefas"
+                  alt="Tela Tarefas"
+                />
+                <img
+                  src="https://placehold.co/180x340/38bdf8/fff?text=Histórico"
+                  alt="Tela Histórico"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img
+            class="project-img"
+            src="https://placehold.co/340x180/232329/fff?text=Boias+IoT"
+            alt="Monitoramento de Boias Inteligentes"
+          />
+          <div class="project-content">
+            <div class="project-title">
+              Monitoramento de Navegação e Boias Inteligentes
+            </div>
+            <span class="project-type"
+              >React Native • Typescript • MongoDb</span
+            >
+            <div class="project-desc">
+              App móvel para rastreamento de boias e condições marítimas em
+              tempo real, com alertas, histórico e integração com sensores IoT.
+            </div>
+            <button class="project-link" onclick="toggleDetails(this)">
+              Ver Projeto
+            </button>
+            <div class="project-details" style="display: none">
+              <p>
+                Visualização em tempo real da boia, dados climáticos, alertas,
+                histórico de rotas e integração com sensores marítimos.
+              </p>
+              <div class="mockup-images">
+                <img
+                  src="https://placehold.co/180x340/38bdf8/fff?text=Mapa"
+                  alt="Tela Mapa"
+                />
+                <img
+                  src="https://placehold.co/180x340/232329/fff?text=Alertas"
+                  alt="Tela Alertas"
+                />
+                <img
+                  src="https://placehold.co/180x340/38bdf8/fff?text=Histórico"
+                  alt="Tela Histórico"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img
+            class="project-img"
+            src="https://placehold.co/340x180/232329/fff?text=Health+App"
+            alt="Health App"
+          />
+          <div class="project-content">
+            <div class="project-title">Health App</div>
+            <span class="project-type"
+              >React Native • TypeScript • MongoDB</span
+            >
+            <div class="project-desc">
+              Aplicativo de saúde inspirado no Samsung Health, com monitoramento
+              de atividades físicas, registro de sono, alimentação, hidratação e
+              acompanhamento de metas de bem-estar.
+            </div>
+            <button class="project-link" onclick="toggleDetails(this)">
+              Ver Projeto
+            </button>
+            <div class="project-details" style="display: none">
+              <p>
+                Permite registrar atividades físicas, sono, alimentação,
+                hidratação, gráficos de progresso, metas e integração com
+                dispositivos.
+              </p>
+              <div class="mockup-images">
+                <img
+                  src="https://placehold.co/180x340/38bdf8/fff?text=Dashboard"
+                  alt="Tela Dashboard"
+                />
+                <img
+                  src="https://placehold.co/180x340/232329/fff?text=Atividades"
+                  alt="Tela Atividades"
+                />
+                <img
+                  src="https://placehold.co/180x340/38bdf8/fff?text=Metas"
+                  alt="Tela Metas"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contato">
+      <h2
+        style="
+          text-align: center;
+          font-size: 2.2rem;
+          color: #fff;
+          margin-bottom: 32px;
+          font-family: 'Poppins', sans-serif;
+        "
+      >
+        <span
+          style="
+            border-bottom: 4px solid #38bdf8;
+            padding-bottom: 8px;
+            display: inline-block;
+          "
+          >Contato</span
+        >
+      </h2>
+      <div style="text-align: center; font-size: 1.2rem">
+        📧
+        <a
+          href="mailto:souza-sjc@hotmail.com"
+          style="color: #38bdf8; text-decoration: none"
+          >souza-sjc@hotmail.com</a
+        ><br />
+        💼
+        <a href="#" style="color: #38bdf8; text-decoration: none">LinkedIn</a>
+      </div>
+    </section>
+    <script>
+      function toggleDetails(btn) {
+        const details = btn.nextElementSibling;
+        if (details.style.display === "none" || details.style.display === "") {
+          details.style.display = "block";
+          btn.textContent = "Ocultar Projeto";
+        } else {
+          details.style.display = "none";
+          btn.textContent = "Ver Projeto";
+        }
+      }
+    </script>
+  </body>
+</html>
