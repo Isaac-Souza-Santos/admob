@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "heroku-postbuild": "echo 'No build step required'"
+    "heroku-postbuild": "echo 'No build step required'",
+    "build": "echo 'No build step required'"
   },
   "keywords": [
     "portfolio",

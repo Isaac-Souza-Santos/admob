@@ -9,7 +9,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Servir arquivos estáticos
-app.use(express.static(__dirname));
+app.use(
+  express.static(__dirname, {
+    index: false, // Não usar index.html automaticamente
+    dotfiles: "ignore", // Ignorar arquivos ocultos
+  })
+);
 
 // Rota de debug
 app.get("/debug", (req, res) => {
@@ -29,12 +34,21 @@ app.get("/app-ads.txt", (req, res) => {
 // Rota principal - servir index.html
 app.get("/", (req, res) => {
   console.log("Rota principal acessada");
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // Todas as outras rotas também servem o index.html (SPA)
 app.get("*", (req, res) => {
+  console.log(`Rota catch-all acessada: ${req.path}`);
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// Tratamento de erro para arquivos não encontrados
+app.use((err, req, res, next) => {
+  console.error("Erro no servidor:", err);
+  res.status(500).send("Erro interno do servidor");
 });
 
 // Iniciar servidor
