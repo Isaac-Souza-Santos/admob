@@ -77,7 +77,7 @@ app.use((err, req, res, next) => {
   res.status(500).send("Internal server error");
 });
 
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
   console.log(`✅ Servidor rodando na porta ${PORT}`);
   console.log(`🌐 Acesse: http://localhost:${PORT}`);
   console.log(`❤️ Health check: http://localhost:${PORT}/health`);
