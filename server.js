@@ -12,7 +12,11 @@ app.use((req, res, next) => {
 });
 
 // Servir arquivos estáticos do diretório atual
-app.use(express.static(__dirname));
+app.use(
+  express.static(__dirname, {
+    index: false, // Desabilita o index automático
+  })
+);
 
 // Rota de teste
 app.get("/test", (req, res) => {
@@ -33,6 +37,7 @@ app.get("/", (req, res) => {
 
   if (fs.existsSync(indexPath)) {
     res.setHeader("Content-Type", "text/html; charset=utf-8");
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
     res.sendFile(indexPath);
   } else {
     console.error("Arquivo index.html não encontrado!");
@@ -43,6 +48,8 @@ app.get("/", (req, res) => {
 // Rota para todas as outras requisições - servir o index.html (SPA)
 app.get("*", (req, res) => {
   console.log("Requisição para rota catch-all:", req.url);
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
