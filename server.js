@@ -4,51 +4,20 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware para parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Servir arquivos estáticos
+app.use(express.static("."));
 
-// Servir arquivos estáticos da pasta public
-app.use(express.static(path.join(__dirname, "public")));
-
-// Rota de debug
-app.get("/debug", (req, res) => {
-  res.json({
-    message: "Servidor funcionando!",
-    timestamp: new Date().toISOString(),
-    port: PORT,
-    files: require("fs").readdirSync(__dirname),
-  });
+// Rota principal - servir o index.html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Rota para app-ads.txt
-app.get("/app-ads.txt", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "app-ads.txt"));
-});
-
-// Todas as rotas servem o index.html (SPA)
+// Rota para todas as outras requisições - redirecionar para o index.html (SPA)
 app.get("*", (req, res) => {
-  console.log(`Rota acessada: ${req.path}`);
-  res.setHeader("Content-Type", "text/html; charset=utf-8");
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Tratamento de erro para arquivos não encontrados
-app.use((err, req, res, next) => {
-  console.error("Erro no servidor:", err);
-  res.status(500).send("Erro interno do servidor");
-});
-
-// Iniciar servidor
 app.listen(PORT, () => {
-  console.log(`✅ Servidor rodando na porta ${PORT}`);
-  console.log(`📁 Diretório atual: ${__dirname}`);
-  console.log(`📄 Arquivos disponíveis:`, require("fs").readdirSync(__dirname));
-
-  // Mostrar URL correta baseada no ambiente
-  if (process.env.NODE_ENV === "production") {
-    console.log(`🌐 Aplicação disponível no Heroku`);
-  } else {
-    console.log(`🌐 Acesse: http://localhost:${PORT}`);
-  }
+  console.log(`🚀 Servidor rodando na porta ${PORT}`);
+  console.log(`📱 Acesse: http://localhost:${PORT}`);
 });

@@ -46,10 +46,14 @@ jspm_packages/
 # dotenv environment variables file
 .env
 
+# parcel-bundler cache
+.cache
+.parcel-cache
+
 # next.js build output
 .next
 
-# Nuxt.js build output
+# nuxt.js build output
 .nuxt
 
 # vuepress build output
@@ -67,6 +71,13 @@ jspm_packages/
 # TernJS port file
 .tern-port
 
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
 # OS generated files
 .DS_Store
 .DS_Store?
@@ -75,14 +86,3 @@ jspm_packages/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Logs
-logs
-*.log
