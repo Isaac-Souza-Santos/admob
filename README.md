@@ -1,18 +1,18 @@
 # Portfolio Isaac Souza
 
-Portfolio pessoal de Isaac Souza - Desenvolvedor Front-End.
+Portfolio pessoal do Isaac Souza - Desenvolvedor Front-End.
 
-## 🚀 Deploy na Heroku
+## 🚀 Deploy no Heroku
 
 ### Pré-requisitos
 
-- Conta na [Heroku](https://heroku.com)
-- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) instalado
-- [Git](https://git-scm.com/) instalado
+- Conta no Heroku
+- Heroku CLI instalado
+- Git instalado
 
 ### Passos para Deploy
 
-1. **Instalar dependências localmente:**
+1. **Instalar dependências localmente (opcional):**
 
    ```bash
    npm install
@@ -26,19 +26,19 @@ Portfolio pessoal de Isaac Souza - Desenvolvedor Front-End.
 
    Acesse: http://localhost:3000
 
-3. **Fazer login na Heroku:**
+3. **Fazer login no Heroku:**
 
    ```bash
    heroku login
    ```
 
-4. **Criar app na Heroku:**
+4. **Criar aplicação no Heroku:**
 
    ```bash
-   heroku create nome-do-seu-app
+   heroku create nome-da-sua-app
    ```
 
-5. **Fazer commit e push:**
+5. **Fazer deploy:**
 
    ```bash
    git add .
@@ -46,7 +46,7 @@ Portfolio pessoal de Isaac Souza - Desenvolvedor Front-End.
    git push heroku main
    ```
 
-6. **Abrir o app:**
+6. **Abrir aplicação:**
    ```bash
    heroku open
    ```
@@ -55,27 +55,29 @@ Portfolio pessoal de Isaac Souza - Desenvolvedor Front-End.
 
 ```
 ├── index.html          # Página principal do portfolio
-├── package.json        # Configurações do Node.js
-├── server.js          # Servidor Express
-├── Procfile           # Configuração do processo Heroku
+├── server.js           # Servidor Express para servir o HTML
+├── package.json        # Dependências e scripts
+├── Procfile           # Configuração do Heroku
 ├── .gitignore         # Arquivos ignorados pelo Git
 └── README.md          # Este arquivo
 ```
 
 ### Tecnologias Utilizadas
 
-- **Frontend:** HTML5, CSS3, JavaScript
-- **Backend:** Node.js, Express
-- **Deploy:** Heroku
-- **Fontes:** Google Fonts (Poppins)
-- **Ícones:** DevIcons
+- HTML5
+- CSS3
+- JavaScript
+- Node.js
+- Express.js
 
-### Contato
+### Funcionalidades
 
-- **Email:** souza-sjc@hotmail.com
-- **GitHub:** [Isaac-Exon](https://github.com/Isaac-Exon)
-- **LinkedIn:** [isaacsouzasantos](http://www.linkedin.com/in/isaacsouzasantos)
+- Design responsivo
+- Animações CSS
+- Navegação suave
+- Seções: Home, Sobre, Competências, Projetos, Contato
+- Interatividade com JavaScript
 
 ---
 
-Desenvolvido com ❤️ por Isaac Souza
+Desenvolvido por Isaac Souza

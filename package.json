@@ -1,7 +1,7 @@
 {
   "name": "isaac-souza-portfolio",
   "version": "1.0.0",
-  "description": "Portfolio pessoal de Isaac Souza - Desenvolvedor Front-End",
+  "description": "Portfolio pessoal do Isaac Souza - Desenvolvedor Front-End",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
