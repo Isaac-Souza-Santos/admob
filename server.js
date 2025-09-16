@@ -35,17 +35,6 @@ app.get("/app-ads.txt", (req, res) => {
   }
 });
 
-// Rota para verificação do Google Search Console
-app.get("/google6ea14f55b40fafcd.html", (req, res) => {
-  console.log("Serving Google verification file");
-  try {
-    res.sendFile(path.join(__dirname, "google6ea14f55b40fafcd.html"));
-  } catch (error) {
-    console.error("Error serving Google verification file:", error);
-    res.status(404).send("File not found");
-  }
-});
-
 // Rota principal - servir o index.html
 app.get("/", (req, res) => {
   console.log("Serving index.html");
