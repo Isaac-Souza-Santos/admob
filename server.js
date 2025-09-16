@@ -8,13 +8,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Servir arquivos estáticos
-app.use(
-  express.static(__dirname, {
-    index: false, // Não usar index.html automaticamente
-    dotfiles: "ignore", // Ignorar arquivos ocultos
-  })
-);
+// Servir arquivos estáticos da pasta public
+app.use(express.static(path.join(__dirname, "public")));
 
 // Rota de debug
 app.get("/debug", (req, res) => {
@@ -28,21 +23,14 @@ app.get("/debug", (req, res) => {
 
 // Rota para app-ads.txt
 app.get("/app-ads.txt", (req, res) => {
-  res.sendFile(path.join(__dirname, "app-ads.txt"));
+  res.sendFile(path.join(__dirname, "public", "app-ads.txt"));
 });
 
-// Rota principal - servir index.html
-app.get("/", (req, res) => {
-  console.log("Rota principal acessada");
-  res.setHeader("Content-Type", "text/html; charset=utf-8");
-  res.sendFile(path.join(__dirname, "index.html"));
-});
-
-// Todas as outras rotas também servem o index.html (SPA)
+// Todas as rotas servem o index.html (SPA)
 app.get("*", (req, res) => {
-  console.log(`Rota catch-all acessada: ${req.path}`);
+  console.log(`Rota acessada: ${req.path}`);
   res.setHeader("Content-Type", "text/html; charset=utf-8");
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Tratamento de erro para arquivos não encontrados
