@@ -58,7 +58,7 @@ app.use(
   })
 );
 
-// Rota principal - servir o index.html (deve vir por último)
+// Rota principal - servir o index.html para todas as rotas não encontradas (SPA)
 app.get("*", (req, res) => {
   console.log("Serving index.html for:", req.path);
   console.log("Current directory:", __dirname);
@@ -93,11 +93,11 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler - fallback para SPA
-app.use((req, res) => {
-  console.log("404 handler triggered for:", req.path);
-  res.status(200).sendFile(path.join(__dirname, "index.html"));
-});
+// 404 handler - fallback para SPA (removido - conflita com rota *)
+// app.use((req, res) => {
+//   console.log("404 handler triggered for:", req.path);
+//   res.status(200).sendFile(path.join(__dirname, "index.html"));
+// });
 
 // Iniciar servidor
 app.listen(PORT, "0.0.0.0", () => {
