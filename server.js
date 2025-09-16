@@ -4,8 +4,22 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Middleware para parsing
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Servir arquivos estáticos
 app.use(express.static(__dirname));
+
+// Rota de debug
+app.get("/debug", (req, res) => {
+  res.json({
+    message: "Servidor funcionando!",
+    timestamp: new Date().toISOString(),
+    port: PORT,
+    files: require("fs").readdirSync(__dirname),
+  });
+});
 
 // Rota para app-ads.txt
 app.get("/app-ads.txt", (req, res) => {
@@ -14,6 +28,7 @@ app.get("/app-ads.txt", (req, res) => {
 
 // Rota principal - servir index.html
 app.get("/", (req, res) => {
+  console.log("Rota principal acessada");
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
@@ -25,6 +40,8 @@ app.get("*", (req, res) => {
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`✅ Servidor rodando na porta ${PORT}`);
+  console.log(`📁 Diretório atual: ${__dirname}`);
+  console.log(`📄 Arquivos disponíveis:`, require("fs").readdirSync(__dirname));
 
   // Mostrar URL correta baseada no ambiente
   if (process.env.NODE_ENV === "production") {
