@@ -17,6 +17,11 @@ app.get("/app-ads.txt", (req, res) => {
   res.sendFile(path.join(__dirname, "app-ads.txt"));
 });
 
+// Rota para verificação do Google Search Console
+app.get("/google6ea14f55b40fafcd.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "google6ea14f55b40fafcd (3).html"));
+});
+
 // Rota para qualquer arquivo estático (CSS, JS, imagens, etc.)
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, req.path));
