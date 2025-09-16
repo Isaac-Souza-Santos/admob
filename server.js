@@ -39,6 +39,12 @@ app.get("/app-ads.txt", (req, res) => {
   }
 });
 
+// Rota específica para a raiz
+app.get("/", (req, res) => {
+  console.log("Serving index.html for root path");
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
 // Servir arquivos estáticos da pasta raiz (apenas arquivos específicos)
 app.use(
   express.static(__dirname, {
@@ -55,11 +61,23 @@ app.use(
 // Rota principal - servir o index.html (deve vir por último)
 app.get("*", (req, res) => {
   console.log("Serving index.html for:", req.path);
+  console.log("Current directory:", __dirname);
+  console.log("Index file exists:", require('fs').existsSync(path.join(__dirname, "index.html")));
+  
   try {
-    res.sendFile(path.join(__dirname, "index.html"));
+    const indexPath = path.join(__dirname, "index.html");
+    console.log("Attempting to serve:", indexPath);
+    res.sendFile(indexPath, (err) => {
+      if (err) {
+        console.error("Error sending file:", err);
+        res.status(500).send("Error loading page: " + err.message);
+      } else {
+        console.log("Successfully served index.html");
+      }
+    });
   } catch (error) {
     console.error("Error serving index.html:", error);
-    res.status(500).send("Error loading page");
+    res.status(500).send("Error loading page: " + error.message);
   }
 });
 
@@ -75,9 +93,10 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler
+// 404 handler - fallback para SPA
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "index.html"));
+  console.log("404 handler triggered for:", req.path);
+  res.status(200).sendFile(path.join(__dirname, "index.html"));
 });
 
 // Iniciar servidor
